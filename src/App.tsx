@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchChat, setCurrentDelta } from "./store/features/chat";
 import selectors from "./store/selectors";
+import { Container, Content, Footer, Header } from "./components/layout/Layout";
+import Messages from "./components/messages/Messages";
 
 function App() {
   const dispatch = useDispatch();
   const { isLoaded, currentDelta } = useSelector(selectors.chat.getRootState);
-  const items = useSelector(selectors.chat.getItems);
   const nextDelta = useSelector(selectors.chat.getNextDelta);
 
   useEffect(() => {
@@ -24,11 +24,15 @@ function App() {
     }, time);
   }, [isLoaded, currentDelta, nextDelta, dispatch]);
 
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
-
-  return <div>chat simulator</div>;
+  return (
+    <Container>
+      <Header />
+      <Content>
+        <Messages />
+      </Content>
+      <Footer />
+    </Container>
+  );
 }
 
 export default App;
