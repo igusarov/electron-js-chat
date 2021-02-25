@@ -1,32 +1,11 @@
 import styled from "styled-components";
-import React, { FC } from "react";
+import React from "react";
 import { gridStep, primaryColor } from "../../css-variables";
 
-const PageWrap = styled.div`
+export const Container = styled.div`
   height: 100%;
-  background-color: slategray;
+  width: 100%;
 `;
-
-const AppWrap = styled.div`
-  height: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
-const AppContainer = styled.div`
-  position: relative;
-  height: 100%;
-`;
-
-export const Container: FC = ({ children }) => {
-  return (
-    <PageWrap>
-      <AppWrap>
-        <AppContainer>{children}</AppContainer>
-      </AppWrap>
-    </PageWrap>
-  );
-};
 
 export const Header = styled.div`
   position: absolute;
